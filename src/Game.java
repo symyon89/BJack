@@ -18,19 +18,10 @@ public class Game {
         int opt;
         do {
             player.introdAmount();
-            do {
-                System.out.println("Cartea trasa este : " + randomHuman.generateCard());
-                System.out.println("Total : " + randomHuman.getSum());
-                if (checkWinLoose()) {
-                    break;
-                }
-                player.menu();
-            } while (player.getOpt() == 1);
+            playerChooseCardMenu();
             randomComputer.computerAlgoritm();
             showResults(randomHuman.getSum(), randomComputer.getSum());
-            System.out.println("1.Da");
-            System.out.println("2.Nu");
-            System.out.print("Alege optiune daca vrei sa joci din nou : ");
+            playAgain();
             opt = scannerNr.nextInt();
             randomHuman.resetArray();
             randomComputer.resetArray();
@@ -77,17 +68,34 @@ public class Game {
         }
     }
 
-    public void winProcedure() {
+    private void winProcedure() {
         System.out.println("Ai castigat, ai avut " + randomHuman.getSum() + " calculatorul a avut " + randomComputer.getSum());
         player.winGame();
     }
 
-    public void equalProcedure() {
+    private void equalProcedure() {
         System.out.println("Egalitate, ai avut " + randomHuman.getSum() + " calculatorul a avut " + randomComputer.getSum());
     }
 
-    public void looseProcedure() {
+    private void looseProcedure() {
         System.out.println("Ai pierdut, ai avut " + randomHuman.getSum() + " calculatorul a avut " + randomComputer.getSum());
         player.looseGame();
     }
+    private void playerChooseCardMenu(){
+        do {
+            System.out.println("Cartea trasa este : " + randomHuman.generateCard());
+            System.out.println("Total : " + randomHuman.getSum());
+            if (checkWinLoose()) {
+                return;
+            }
+            player.menu();
+        } while (player.getOpt() == 1);
+    }
+    private void playAgain(){
+        System.out.println("Balanta ta este : " + player.getBalance());
+        System.out.println("1.Da");
+        System.out.println("2.Nu");
+        System.out.print("Alege optiune daca vrei sa joci din nou : ");
+    }
+
 }
