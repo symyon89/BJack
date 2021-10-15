@@ -21,7 +21,7 @@ public class Game {
             do {
                 System.out.println("Cartea trasa este : " + randomHuman.generateCard());
                 System.out.println("Total : " + randomHuman.getSum());
-                if (!checkWinLoose()) {
+                if (checkWinLoose()) {
                     break;
                 }
                 player.menu();
@@ -38,11 +38,11 @@ public class Game {
     }
 
     private boolean checkWinLoose() {
-        boolean isTrue = true;
+        boolean isTrue = false;
         if (randomHuman.getSum() > 21) {
-            isTrue = false;
+            isTrue = true;
         } else if (randomHuman.getSum() == 21) {
-            isTrue = false;
+            isTrue = true;
         }
         return isTrue;
     }
