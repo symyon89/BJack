@@ -2,7 +2,7 @@ import java.util.Arrays;
 import java.util.Random;
 
 public class RandomCards {
-    private final int [] cards = new int[21];
+    private final int [] cards = new int[15];
     private int sum ;
 
 
