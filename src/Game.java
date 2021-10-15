@@ -15,7 +15,7 @@ public class Game {
 
     public void startGame() {
         player.introdBalance();
-        int opt = 1;
+        int opt;
         do {
             player.introdAmount();
             do {
@@ -50,44 +50,44 @@ public class Game {
     private void showResults(int valuePlayer, int valueComputer) {
         if (valuePlayer > 21) {
             if (valueComputer > 21) {
-                equalProcedure(valuePlayer, valueComputer);
+                equalProcedure();
             } else {
-                looseProcedure(valuePlayer, valueComputer);
+                looseProcedure();
             }
         } else if (valuePlayer == 21) {
             if (valueComputer == 21) {
-                equalProcedure(valuePlayer, valueComputer);
+                equalProcedure();
             } else {
-                winProcedure(valuePlayer, valueComputer);
+                winProcedure();
             }
         } else {
             if (valueComputer > 21) {
-                winProcedure(valuePlayer, valueComputer);
+                winProcedure();
             } else if (valueComputer == 21) {
-                looseProcedure(valuePlayer, valueComputer);
+                looseProcedure();
             } else {
                 if (valueComputer > valuePlayer) {
-                    looseProcedure(valuePlayer, valueComputer);
+                    looseProcedure();
                 } else if (valueComputer == valuePlayer) {
-                    equalProcedure(valuePlayer, valueComputer);
+                    equalProcedure();
                 } else {
-                    winProcedure(valuePlayer, valueComputer);
+                    winProcedure();
                 }
             }
         }
     }
 
-    public void winProcedure(int valuePlayer, int valueComputer) {
-        System.out.println("Ai castigat, ai avut " + valuePlayer + " calculatorul a avut " + valueComputer);
+    public void winProcedure() {
+        System.out.println("Ai castigat, ai avut " + randomHuman.getSum() + " calculatorul a avut " + randomComputer.getSum());
         player.winGame();
     }
 
-    public void equalProcedure(int valuePlayer, int valueComputer) {
-        System.out.println("Egalitate, ai avut " + valuePlayer + " calculatorul a avut " + valueComputer);
+    public void equalProcedure() {
+        System.out.println("Egalitate, ai avut " + randomHuman.getSum() + " calculatorul a avut " + randomComputer.getSum());
     }
 
-    public void looseProcedure(int valuePlayer, int valueComputer) {
-        System.out.println("Ai pierdut, ai avut " + valuePlayer + " calculatorul a avut " + valueComputer);
+    public void looseProcedure() {
+        System.out.println("Ai pierdut, ai avut " + randomHuman.getSum() + " calculatorul a avut " + randomComputer.getSum());
         player.looseGame();
     }
 }
