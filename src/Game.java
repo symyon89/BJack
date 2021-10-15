@@ -84,7 +84,6 @@ public class Game {
 
     public void equalProcedure(int valuePlayer, int valueComputer) {
         System.out.println("Egalitate, ai avut " + valuePlayer + " calculatorul a avut " + valueComputer);
-        ;
     }
 
     public void looseProcedure(int valuePlayer, int valueComputer) {
