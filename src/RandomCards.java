@@ -46,7 +46,7 @@ public class RandomCards {
             if (getSum() < 15) {
                 generateCard();
             } else if (getSum() < 18) {
-                java.util.Random random = new java.util.Random();
+                Random random = new Random();
                 int risc = random.nextInt(2);
                 if (risc == 0) {
                     generateCard();
