@@ -1,11 +1,12 @@
+import java.util.Arrays;
 import java.util.Random;
 
-public class RandomComputer {
-    private int [] cards = new int[21];
+public class RandomCards {
+    private final int [] cards = new int[21];
     private int sum ;
 
 
-    public void generateCard(){
+    public int generateCard(){
         Random random = new Random();
         int card = random.nextInt(13) + 2;
         if(card >11){
@@ -17,11 +18,13 @@ public class RandomComputer {
                 break;
             }
         }
+        return card;
     }
+
     private void showTotal(){
         sum = 0;
-        for (int i = 0; i < cards.length; i++) {
-            this.sum += cards[i];
+        for (int card : cards) {
+            this.sum += card;
         }
         if(sum > 21){
             for (int i = 0; i < cards.length; i++) {
@@ -43,7 +46,7 @@ public class RandomComputer {
             if (getSum() < 15) {
                 generateCard();
             } else if (getSum() < 18) {
-                Random random = new Random();
+                java.util.Random random = new java.util.Random();
                 int risc = random.nextInt(2);
                 if (risc == 0) {
                     generateCard();
@@ -55,9 +58,7 @@ public class RandomComputer {
         }
     }
     public void resetArray(){
-        for (int i = 0; i < cards.length; i++) {
-            cards[i]=0;
-        }
+        Arrays.fill(cards, 0);
     }
 }
 

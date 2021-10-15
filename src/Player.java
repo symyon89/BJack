@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Player {
     private int balance = 0;
     private int betAmount;
-    private Scanner scannerNr = new Scanner (System.in);
+    private final Scanner scannerNr = new Scanner (System.in);
     private int opt;
 
 
@@ -50,9 +50,6 @@ public class Player {
         return balance;
     }
 
-    public void setBalance(int balance) {
-        this.balance = balance;
-    }
     public void menu(){
         System.out.println("1.Trage o carte noua");
         System.out.println("2.Ma opresc");
@@ -68,7 +65,4 @@ public class Player {
         return opt;
     }
 
-    public void setOpt(int opt) {
-        this.opt = opt;
-    }
 }

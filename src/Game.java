@@ -2,14 +2,14 @@ import java.util.Scanner;
 
 public class Game {
     Player player;
-    RandomHuman randomHuman;
-    RandomComputer randomComputer;
+    RandomCards randomCardsHuman;
+    RandomCards randomCardsComputer;
     Scanner scannerNr;
 
     public Game() {
         player = new Player();
-        randomHuman = new RandomHuman();
-        randomComputer = new RandomComputer();
+        randomCardsHuman = new RandomCards();
+        randomCardsComputer = new RandomCards();
         scannerNr = new Scanner(System.in);
     }
 
@@ -19,20 +19,20 @@ public class Game {
         do {
             player.introdAmount();
             playerChooseCardMenu();
-            randomComputer.computerAlgoritm();
-            showResults(randomHuman.getSum(), randomComputer.getSum());
+            randomCardsComputer.computerAlgoritm();
+            showResults(randomCardsHuman.getSum(), randomCardsComputer.getSum());
             playAgain();
             opt = scannerNr.nextInt();
-            randomHuman.resetArray();
-            randomComputer.resetArray();
+            randomCardsHuman.resetArray();
+            randomCardsComputer.resetArray();
         } while (opt == 1);
     }
 
     private boolean checkWinLoose() {
         boolean isTrue = false;
-        if (randomHuman.getSum() > 21) {
+        if (randomCardsHuman.getSum() > 21) {
             isTrue = true;
-        } else if (randomHuman.getSum() == 21) {
+        } else if (randomCardsHuman.getSum() == 21) {
             isTrue = true;
         }
         return isTrue;
@@ -69,22 +69,22 @@ public class Game {
     }
 
     private void winProcedure() {
-        System.out.println("Ai castigat, ai avut " + randomHuman.getSum() + " calculatorul a avut " + randomComputer.getSum());
+        System.out.println("Ai castigat, ai avut " + randomCardsHuman.getSum() + " calculatorul a avut " + randomCardsComputer.getSum());
         player.winGame();
     }
 
     private void equalProcedure() {
-        System.out.println("Egalitate, ai avut " + randomHuman.getSum() + " calculatorul a avut " + randomComputer.getSum());
+        System.out.println("Egalitate, ai avut " + randomCardsHuman.getSum() + " calculatorul a avut " + randomCardsComputer.getSum());
     }
 
     private void looseProcedure() {
-        System.out.println("Ai pierdut, ai avut " + randomHuman.getSum() + " calculatorul a avut " + randomComputer.getSum());
+        System.out.println("Ai pierdut, ai avut " + randomCardsHuman.getSum() + " calculatorul a avut " + randomCardsComputer.getSum());
         player.looseGame();
     }
     private void playerChooseCardMenu(){
         do {
-            System.out.println("Cartea trasa este : " + randomHuman.generateCard());
-            System.out.println("Total : " + randomHuman.getSum());
+            System.out.println("Cartea trasa este : " + randomCardsHuman.generateCard());
+            System.out.println("Total : " + randomCardsHuman.getSum());
             if (checkWinLoose()) {
                 return;
             }
